@@ -1,41 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
+
+import BTable from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useTable } from 'react-table';
 
-import { getChatsList } from "../util/dasbot";
-import Date from "../components/date";
+import Link from 'next/link';
+
+import { getChatsList } from "../../util/dasbot";
+import Layout from "../../components/layout";
+import Date from "../../components/date";
 
 export default function Chats({ chats }) {
-  const Styles = styled.div`
-    padding: 1rem;
-
-    table {
-      border-spacing: 0;
-      border: 1px solid black;
-
-      tr {
-        :last-child {
-          td {
-            border-bottom: 0;
-          }
-        }
-      }
-
-      th,
-      td {
-        margin: 0;
-        padding: 0.5rem;
-        border-bottom: 1px solid black;
-        border-right: 1px solid black;
-
-        :last-child {
-          border-right: 0;
-        }
-      }
-    }
-  `
-
   const data = React.useMemo(
     () => chats, []
   );
@@ -46,7 +22,7 @@ export default function Chats({ chats }) {
         Header: 'Chat ID',
         accessor: 'chat_id',
         Cell: ({ cell: { value} }) => 
-          <Link href={`chats/${value}`}>
+          <Link href={`/chats/${value}`}>
             <a>{value}</a>
           </Link>
       },
@@ -72,10 +48,10 @@ export default function Chats({ chats }) {
   } = useTable({ columns, data })
 
   return (
-    <div>
-      <h1>Dasbot users</h1>
-      <Styles>
-        <table {...getTableProps()}>
+    <Layout>
+      <Container className="mt-3">
+        <h2>Dasbot users</h2>
+        <BTable striped bordered size="sm" {...getTableProps()}>
           <thead>
             {// Loop over the header rows
             headerGroups.map(headerGroup => (
@@ -115,9 +91,9 @@ export default function Chats({ chats }) {
               )
             })}
           </tbody>
-        </table>
-      </Styles>
-    </div>
+        </BTable>
+      </Container>
+    </Layout>
   );
 }
 

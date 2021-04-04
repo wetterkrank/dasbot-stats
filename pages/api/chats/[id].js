@@ -1,14 +1,7 @@
-import { connectToDatabase } from "../../../util/mongodb";
+import { getChat } from "../../../util/dasbot";
 
 export default async (req, res) => {
-  const { id } = req.query;
-  const { db } = await connectToDatabase();
-
-  const chat = await db
-    .collection("chats")
-    .find({ chat_id: parseInt(id) })
-    .toArray() // Note the array here, required for .json() helper
-
+  const id = parseInt(req.query.id);
+  const chat = await getChat(id);
   res.json(chat);
 };
-

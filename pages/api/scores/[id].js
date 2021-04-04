@@ -1,15 +1,7 @@
-import { connectToDatabase } from "../../../util/mongodb";
+import { getChatScores } from "../../../util/dasbot";
 
 export default async (req, res) => {
-  const { id } = req.query;
-  const { db } = await connectToDatabase();
-
-  const projection = { _id: 0, chat_id: 0 };
-  const chatScores = await db
-    .collection("scores")
-    .find({ chat_id: parseInt(id) })
-    .project(projection)
-    .toArray()
-
+  const id = parseInt(req.query.id);
+  const chatScores = await getChatScores(id);
   res.json(chatScores);
 };
