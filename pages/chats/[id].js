@@ -1,6 +1,5 @@
 import BTable from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useTable, useSortBy } from 'react-table';
 
 import { getChat, getChatScores } from "../../util/dasbot";
@@ -41,7 +40,7 @@ export default function chatDetails ({ chatInfo, chatScores }) {
 
   return (
     <Layout>
-      <Container className="mt-3">
+      <Container className="my-4">
 
         <h2>Chat #{chatInfo.chat_id}</h2>
         <p>

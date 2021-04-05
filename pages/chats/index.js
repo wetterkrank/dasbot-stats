@@ -2,7 +2,6 @@ import React from 'react';
 
 import BTable from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useTable } from 'react-table';
 
 import Link from 'next/link';
@@ -49,7 +48,7 @@ export default function Chats({ chats }) {
 
   return (
     <Layout>
-      <Container className="mt-3">
+      <Container className="my-4">
         <h2>Dasbot users</h2>
         <BTable striped bordered size="sm" {...getTableProps()}>
           <thead>

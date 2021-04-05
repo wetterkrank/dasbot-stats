@@ -5,9 +5,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
 export default function Layout({ children, home }: {children: React.ReactNode, home?: boolean}) {
+
+  
   return (
     <div>
       <Head>
+        <title>Dasbot Stats</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -22,6 +25,11 @@ export default function Layout({ children, home }: {children: React.ReactNode, h
       </Navbar>
 
       <main>{children}</main>
+
+      <footer>
+        Made with Next.js
+      </footer>
+
     </div>
   )
 }
