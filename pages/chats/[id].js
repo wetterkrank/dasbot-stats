@@ -113,7 +113,7 @@ export async function getServerSideProps({ params }) {
   return {
     props: {
       chatInfo: JSON.parse(JSON.stringify(chatInfo[0])), 
-      chatScores: JSON.parse(JSON.stringify(chatScores)), 
+      chatScores: JSON.parse(JSON.stringify(chatScores)),
     }
   };
 }
